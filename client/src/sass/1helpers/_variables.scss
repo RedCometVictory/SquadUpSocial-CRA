@@ -1,0 +1,89 @@
+// light background
+// --light-bg: #FCFCFC;
+// --light-bg-panel: #EBEBEB;
+// --light-color-heading: #0077FF;
+// --light-color-text: #333333;
+/*
+Dark background
+--dark-bg: #333333;
+--dark-bg-panel: #434343;
+--dark-color-heading: #3684FF;
+--dark-color-text: #B5B5B5;
+
+my color pick
+--dark-primary: #0a0909;
+--dark-pt-winter: #2de9f5;
+--dark-pt-summer: #ffa400;
+--dark-primary: #0a0909;
+--dark-pt-winter: #2de9f5;
+--dark-pt-summer: #ffa400;
+*/
+
+$light-bg: rgb(252, 252, 252);
+$light-bg-panel: rgb(235, 235, 235);
+$light-color-heading: rgb(0, 119, 255);
+$light-color-text: rgb(51, 51, 51);
+
+// light background
+// $light-bg: #FCFCFC;
+// $light-bg-panel: #EBEBEB;
+// $light-color-heading: #0077FF;
+// $light-color-text: #333333;
+
+// Dark background
+// $dark-bg: #333333;
+// $dark-bg-panel: #434343;
+// $dark-color-heading: #3684FF;
+// $dark-color-text: #B5B5B5;
+
+// my color pick
+// $dark-primary: #0a0909;
+// $dark-pt-winter: #2de9f5;
+// $dark-pt-summer: #ffa400;
+
+$main-background: #f3e9d2;
+$main-background2: #eeeeee;
+$light-background: #f3f3f3; // may delete
+$calm-gray: #796e6e; // hr seperaters
+// $calm-gray: #dddddd; // hr seperaters
+$logo-link: #ffffff;
+$primary-link-color: #17a2b8;
+
+// $nice-purple: #745fb5; // primary theme color
+// $nice-purple: #9c87dd; // primary theme color - lighter
+$nice-purple: #af96fa; // primary theme color - best
+
+// gradient theme #1
+$grad-01-background: rgb(243,233,210);
+$grad-01-background2: radial-gradient(circle, rgba(243,233,210,1) 0%, rgba(174,158,194,1) 66%, rgb(191, 169, 255) 100%); 
+// $grad-01-background2: radial-gradient(circle, rgba(243,233,210,1) 0%, rgba(174,158,194,1) 66%, rgba(116,95,181,1) 100%); 
+
+// potential vars to use 
+$main-color: #2cb978;
+$main-light-green: #b2d430;
+$blue: #1a8b9d;
+$black-text: #0f0f0f;
+$black: #000000;
+$sea-green: #15cda8;
+$teal: #099a97;
+$light-green: #a4f6a5;
+$light-blue: #23eae6;
+$calm-green: #6dc995;
+$gold: #f5b316;
+
+$gold2: #ffd717;
+$teal2: #0da574;
+$dark-blue2: #083358;
+$deep-dark-blue: #001f3f;
+
+$main-green: #b2d430;
+$main-blue: #1a8b9d;
+
+$dark-color: #343a40;
+$light-color: #f4f4f4;
+$danger-color: #dc3545;
+$success-color: #28a745;
+
+// potentially throw away:
+$main-background4: #fff5f5;
+$main-background3: #efecec;

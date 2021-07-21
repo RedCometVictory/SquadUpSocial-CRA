@@ -1,0 +1,231 @@
+// Mobile First -complete- disabled
+.nav__header {
+  outline: none;
+  display: flex;
+  height: 3.5rem;
+  z-index: 1000;
+  width: 100%;
+  color: var(--color-text);
+  // position: relative;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: var(--color-navbar);
+  transition: 0.5s;
+  .nav__logo {
+    .logo {
+      text-decoration: none;
+      color: var(--color-logo);
+    }
+  }
+  .burger {
+    cursor: pointer;
+    right: 22px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    padding: 0.5rem;
+    margin: 0.5rem 1.4rem;
+    color: var(--color-logo);
+    outline: none;
+    .fa-bars {
+      outline: none;
+      position: absolute;
+      right: 50px;
+      top: 20px;
+    }
+    
+    &:focus-within > div nav .nav__item-list {
+      right: 0%;
+      transition: all 0.5s;
+      outline: none;
+    }
+  }
+  .nav-container {
+    margin: 0.5rem;
+    outline: none;
+    .nav {
+      align-items: center;
+      margin: 0.5rem;
+      outline: none;
+      &__item-list {
+        position: absolute;
+        width: 40%;
+        max-width: 40%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.75);
+        top: 3.5em;
+        right: -100%;
+        text-align: center;
+        transition: all 0.5s;
+        padding: 1rem;
+        cursor: default;
+      }
+      &__item {
+        list-style: none;
+        display: block;
+        // margin: 2rem 0;
+        line-height: 3rem;
+        border:  0px;
+        padding: 1rem 0;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0);
+        }
+      }
+      &__link {
+        cursor: pointer;
+        position: relative;
+        text-decoration: none;
+        font-size: 1rem;
+        color: var(--overlay-text);
+        transition: 0.5s;
+        outline: none;
+        &::after {
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 3px;
+          top: 100%;
+          left: 0;
+          background: var(--color-text-dark-2);
+          transition: transform 0.5s;
+          transform: scaleX(0);
+          transform-origin: right;
+        }
+        &:hover {
+          &::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+      }
+    }
+  }
+  .theme-toggler {
+    z-index: 200;
+    display: none;
+    &:checked ~ div .theme__item-list {
+      right: 0;
+    }
+    &:checked ~ .theme-selection .fa-caret-down {
+      transform: rotateX(180deg);
+    }
+  }
+  .theme-selection {
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    justify-content: space-between;
+    .fa-caret-down {
+      color: var(--color-logo);
+      transition: all 0.5s;
+    }
+  }
+  .theme {
+    margin: 0.5rem;
+    &__item-list {
+      position: absolute;
+      width: 100%;
+      background-color: var(--color-navbar-2);
+      top: 3.5rem;
+      right: -100%;
+      transition: all 0.5s;
+      display: flex;
+      padding: 0.5rem 0;
+      align-items: center;
+      justify-content: center;
+    }
+    &__item {
+      list-style: none;
+      display: inline-block;
+      margin: 0rem 0.7rem;
+      line-height: 3rem;
+      padding: 0 0rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    &__link {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      outline: none;
+      &.light {
+        background-image: linear-gradient(rgb(252, 252, 252) 50%, rgb(51,51,51) 50%);
+      }
+      &.dark {
+        background-image: linear-gradient(rgb(51, 51, 51) 50%, rgb(71, 71, 71) 50%);
+      }
+      &.purple-prime {
+        background-image: linear-gradient(rgb(175, 150, 250) 50%, rgb(51, 51, 51) 50%);
+      }
+      &.bee {
+        background-image: linear-gradient(rgb(222, 201, 6) 50%, rgb(51, 51, 51) 50%);
+      }
+      &.redcomet {
+        background-image: linear-gradient(rgb(233, 55, 55) 50%, rgb(51, 51, 51) 50%);
+      }
+    }
+  }
+}
+// Desktop Screen Format
+@media (min-width: 820px) {
+  .burger {
+    .fa-bars {
+      display: none;
+    }
+    .nav-container {
+      position: absolute;
+      right: 2rem;
+      top: 12px;
+      .nav {
+        display: flex;
+        align-items: center;
+        &__item-list {
+          all: unset;
+          list-style: none;
+          display: flex;
+        }
+        &__item-list--secondary {
+          margin-top: 0rem;
+          margin-right: 0rem;
+        }
+        &__item {
+          margin: 0;
+          // margin: 2rem 0;
+          padding: 0 1rem;
+          line-height: 0;
+        }
+        &__link {
+          color: var(--color-logo);
+        }
+      }
+    }
+  }
+}
+// a maximum of "x"px and smaller
+// desktop display... considered desktop first
+// @media (max-width: 800px) {}
+  
+// combine media features to create a media query that only works between both specified sizes:
+
+// @media (min-width: 600px) and (max-width: 900px{...}
+
+
+// minimum of "x"px and bigger - known as mobile-first, 
+// @media (min-width: 800px) {}
+//    Make the navigation layout work
+//    on both mobile and large screens.
+
+//    Mobile-first, so mobile styles first,
+//    then add the large screen styles
+//    inside the existing media query

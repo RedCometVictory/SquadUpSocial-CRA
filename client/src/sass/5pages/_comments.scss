@@ -1,0 +1,228 @@
+.comment {
+  // .comments-wrapper {}
+  // .comment {}
+  &__feed {
+    margin: 1rem 0;
+    height: auto;
+    padding: 0rem 0 1px;
+    background-color: var(--bg-panel);
+    border-radius: 6px;
+    padding-top: 0.5rem;
+  }
+  &__count {
+    padding: 0 0 6px 16px;
+  }
+  &__comment-wrapper {
+    padding: 1rem;
+    margin: 0 0 1rem 0;
+    background-color: var(--bg-panel);
+    border-top: 1px solid var(--bg-primary);
+    border-bottom: 1px solid var(--bg-primary);
+  }
+
+  &__comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  &__comment-avatar {
+    background-color: var(--bg-primary);
+    object-fit: cover;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__comment-name {
+    margin: 0 0 0 12px;
+  }
+  &__comment-title {
+    margin: 0 0 4px 0;
+  }
+  &__image-container {
+    border: none;
+  }
+  &__comment-image {
+    border-radius: 6px;
+    background-color: darkcyan;
+    width: 100%;
+    max-height: 28rem;
+    background-color: var(--bg-primary);
+    object-fit: scale-down;
+    display: flex;
+  }
+  &__comment-description {
+    height: auto;
+    padding: 0.6rem 0 0.6rem 0;
+  }
+  &__comment-stats {
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    // padding: 0.6rem 0.4rem 0.4rem;
+    margin: 0.3rem 0 0.4rem 0;
+    // background-color: blue;
+  }
+  &__stat-sec-one {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  &__thumb-btn {
+    margin: 0 0 0.6rem 0;
+    width: 100%;
+    text-align: center;
+    &--sec {
+      margin: 0
+    }
+  }
+  &__thumb-up {
+    margin-right: 6px;
+  }
+  &__delete-comment {
+    // width: 100%;
+    height: 68px;
+    // margin: 0;
+  }
+  img { width: 100%; }
+  .comment-count {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    padding: 0.1rem 0.2rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+  }
+  .comment-date {
+    color: #aaa;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+}
+// ##################################################
+// ##################################################
+// ##################################################
+@media (min-width: 360px) {
+  .comment {
+    &__comment-image {
+      object-fit: scale-down;
+    }
+    &__thumb-up {
+      // margin-right: 6px;
+      padding: 0 0 0 10px;
+    }
+  }
+}
+// @media (min-width: 400px) {
+@media (min-width: 380px) {
+  .comment {
+    &__indiv-view {
+      display: flex;
+      flex-direction: row;
+    }
+    &__indiv-sec-one {
+      display: flex;
+      width: initial;
+      margin: initial;
+      flex-direction: row;
+      align-self: flex-start;
+    }
+    &__indiv-thumb {
+      width: initial;
+      padding: 5.8px 12.8px;
+      margin: 0 6px 0 0;
+    }
+    &__indiv-sec-two {
+      flex-direction: row;
+    }
+    &__edit-btn {
+      margin: 0 0.6rem 0 0;
+      align-self: stretch;
+    }
+    &__delete-comment {
+      width: initial;
+    }
+  }
+}
+@media (min-width: 540px) {
+  // .like-unlike-sec {
+  //   flex: 0 1 auto;
+  // }
+  .comment {
+    &__comment-stats {
+      justify-content: initial;
+      align-items: flex-start;
+    }
+    &__indiv-view {
+      justify-content: space-between;
+    }
+    &__stat-sec {
+      flex-direction: row;
+      margin: inherit;
+    }
+    &__stat-sec-one {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      position: relative;
+      .like-unlike-sec {
+        justify-content: flex-start;
+      }
+    }
+    &__stat-sec-two {
+      display: flex;
+      white-space: nowrap;
+      align-items: flex-start;
+    }
+    &__thumb-btn {
+      width: initial;
+      margin: 0 0.7rem 0 0;
+    }
+    &__indiv-thumb {
+      width: initial;
+      padding: 5.8px 12.8px;
+      // padding: 4.8px;
+      margin: 0 6px 0 0;
+    }
+    &__feed-thumb-btn {
+      display: inherit;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-right: 0.4rem;
+      padding: 0 8px;
+      width: initial;
+    }
+    &__thumb-up {
+      margin-right: 8px;
+      padding: 0;
+    }
+    &__thumb-down {
+      width: 50px;
+    }
+    &__comment {
+      white-space: nowrap;
+    }
+    &__comment-btn {
+      // margin: 0 0 0 1rem;
+      margin: initial;
+      // position: absolute;
+      // left: 132px;
+      // left: 156px;
+    }
+    &__stat-sec-two {
+      display: initial;
+    }
+    &__indiv-sec-two {
+      display: flex;
+      flex-direction: row;
+    }
+    &__delete-comment {
+      height: initial;
+    }
+  }
+}

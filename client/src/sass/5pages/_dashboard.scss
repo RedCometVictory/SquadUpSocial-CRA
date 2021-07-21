@@ -1,0 +1,114 @@
+.dashboard-page-wrapper {
+  padding: 3.5rem 0 0;
+}
+.dashboard {
+  padding-top: 2rem;
+  p {
+    margin-bottom: 1rem;
+  }
+  &__delete-wrapper {
+    text-align: center;
+    // height: 12rem;
+    border-radius: 5px;
+    // background-color: rgb(220, 53, 69);
+    border: 1px solid rgb(220, 53, 69);
+    padding: 1rem 1rem 1rem;
+  }
+  &__btn-sec {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: initial;
+    flex-direction: column;
+  }
+  &__btn-one {
+    margin: 0 0 0.5rem;
+    align-self: stretch;
+  }
+  &__btn-two {
+    margin: 0;
+    align-self: stretch;
+  }
+  &__content-default {
+    display: flex;
+    flex-direction: column;
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    flex-direction: column;
+  }
+  &__button-section {
+    width: 50%;
+    display: inline-block;
+  }
+  &__button {
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    margin: 0.3rem 0;
+    display: block;
+  }
+  &__btn {
+    margin: 0;
+    // border-radius: 3px;
+    width: 8.2rem
+  }
+}
+// Small Phone / Tablet Screen Format & larger
+@media (min-width: 388px) {
+  .dashboard {
+    &__buttons {
+      flex-direction: column;
+    }
+    &__button {
+      width: 100%;
+    }
+    // &__delete-wrapper {}
+    &__btn-sec {
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+    }
+    &__btn-one {
+      margin: 0;
+      align-self: stretch;
+    }
+    &__btn-two {
+      margin: 0;
+      align-self: stretch;
+    }
+  }
+}
+@media (min-width: 420px) {
+  .dashboard {
+    &__btn-sec {
+      justify-content: space-around;
+    }
+  }
+}
+@media (min-width: 720px) {
+  .dashboard {
+    &__buttons {
+      flex-direction: row;
+    }
+    &__button {
+      width: auto;
+    }
+  }
+}
+@media (min-width: 960px) {
+  .dashboard {
+    &__buttons {
+      flex-direction: row;
+      max-width: 80%;
+      justify-content: space-around;
+      margin: 0 auto;
+    }
+    &__button {
+      width: auto;
+    }
+  }
+}

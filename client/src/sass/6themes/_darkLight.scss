@@ -1,0 +1,180 @@
+// light theme default
+:root.light {
+  --color-logo: rgb(51, 51, 51);
+  --color-tagbox: rgb(51, 51, 51);
+  --color-header: rgb(0, 119, 255);
+  --color-text: rgb(51, 51, 51);
+  --color-form-label: rgb(10, 9, 9);
+  --color-link: rgb(45, 45, 45);
+  // --color-link: rgb(198, 198, 198);
+  --color-navbar: rgb(198, 198, 198);
+  --color-navbar-a: rgba(198, 198, 198, 0.2);
+  --color-navbar-2: rgba(36, 36, 36, 0.6);
+  --color-btn-text: rgb(51, 51, 51);
+  --color-btn-text-hover: rgb(163, 162, 162);
+  --color-btn-hover: rgb(255, 255, 255);
+  --color-btn-secondary-hover: rgb(151, 150, 150);
+  --bg-primary: rgb(252, 252, 252);
+  --bg-panel: rgb(235, 235, 235);
+  // --bg-panel: rgb(221, 220, 220);
+  --overlay-text: rgb(252, 252, 252);
+  // --primary-color: #17a2b8;
+  // --dark-color: #343a40;
+  --light-disabled-color: #6c757d;
+  --alert-neutral: #f4f4f4;
+  --alert-danger: #dc3545;
+  --alert-success: #28a745;
+  --danger-color: #dc3545;
+}
+:root.dark {
+  --color-logo: rgb(181, 181, 181);
+  --color-tagbox: rgb(181, 181, 181);
+  --color-header: rgb(54, 132, 255);
+  --color-text: rgb(181, 181, 181);
+  // --color-navbar: rgb(100, 100, 100);
+  --color-form-label: rgb(181, 181, 181);
+  // --color-navbar: rgb(51, 51, 51);
+  --color-link: rgb(198, 198, 198);
+  --color-navbar: rgb(45, 45, 45);
+  --color-navbar-a: rgba(45, 45, 45, 0.2);
+  --color-navbar-2: rgba(36, 36, 36, 0.6);
+  --color-btn-text: rgb(245, 238, 238);
+  --color-btn-text-hover: rgb(51, 51, 51);
+  --color-btn-hover: rgb(245, 238, 238);
+  --color-btn-secondary-hover: rgb(141, 141, 141);
+  // --bg-primary: rgb(61, 61, 61);
+  // --bg-panel: rgb(67, 67, 67);
+  --bg-primary: rgb(71, 71, 71);
+  --bg-panel: rgb(57, 57, 57);
+  --overlay-text: rgb(252, 252, 252);
+  // --primary-color: #17a2b8;
+  // --dark-color: #343a40;
+  --dark-disabled-color: #4a4a4b;
+  --alert-neutral: #f4f4f4;
+  --alert-danger: #dc3545;
+  --alert-success: #28a745;
+  --danger-color: #dc3545;
+}
+// --section-card-bg: ;
+
+
+  // --main-bg: rgba(252, 252, 252);
+  // --main-bg-a: rgba(252, 252, 252, 0.90);
+  // --navbar-color: rgb(235, 235, 235);
+  // --navbar-color-a: rgba(235, 235, 235, 0.65);
+  // --navbar-color: rgb(214, 214, 214);
+  // --navbar-color-a: rgba(214, 214, 214, 0.65);
+  // --navbar-color-border: rgb(214, 214, 214);
+  // --navbar-btn-a: rgba(214, 214, 214, 0.65);
+  // --navbar-btn-icon: rgb(45, 45, 45);
+  // --navbar-btn-border: rgb(214, 214, 214);
+  // --navbar-btn-border-a: rgb(214, 214, 214, 0.65);
+  // --color-logo:rgb(51, 51, 51);
+  // --color-heading: rgb(0, 119, 255);
+  // --color-text-light:#B5B5B5;
+  // --color-text-dark:#333333;
+  // --color-border: #bbbbbb;
+  // --li-hover-color: rgb(212, 211, 211);
+  // --li-border:rgb(51, 51, 51);
+  // --footer-bg-color-a: rgb(235, 235, 235, 1);
+  // --section-particle-mask-a: linear-gradient(to bottom, transparent 60%, black 75%);
+  // --section-particles-mask-a: linear-gradient(to top, transparent 60%, black 100%);
+  // --section-bg-color-a: rgba(235, 235, 235, 0);
+  // --section-card-bg-a: rgba(235, 235, 235, 0);
+  // --section-card-bg-tech-a: rgba(235, 235, 235, 1);
+  // --section-card-tech-border-a: 0px solid rgba(10, 9, 9, 0);
+  // --section-product-card-border-a: initial;
+  // --section-product-info-bg-a: rgba(235, 235, 235, 1);
+  // --section-product-info-border-a: initial;
+// }
+/*
+:root.dark-winter {
+  --main-bg: rgb(10, 9, 9);
+  --main-bg-a: rgb(10, 9, 9, 0.75);
+  --navbar-color: rgb(10, 9, 9);
+  --navbar-color-a: rgba(10, 9, 9, 0.75);
+  --navbar-color-border: #2de9f5;
+  --navbar-btn-a: rgba(45, 233, 245, 1);
+  --navbar-btn-icon:rgb(10, 9, 9);
+  --navbar-btn-border: rgb(45, 233, 245);
+  --navbar-btn-border-a: rgb(45, 233, 245, 1);
+  --color-logo: rgb(45, 233, 245);
+  --color-heading: rgb(45, 233, 245);
+  --color-text:#B5B5B5;
+  --color-border: rgb(45, 233, 245);
+  --li-hover-color: rgb(45, 233, 245);
+  --li-border:rgb(45, 233, 245);
+  --footer-bg-color-a:rgb(10, 9, 9, 1);
+  --section-particles-mask-a: initial;
+  --section-bg-color-a: rgba(10, 9, 9, 0);
+  --section-card-bg-a: rgba(10, 9, 9, 0);
+  --section-card-bg-tech-a: rgba(10, 9, 9, 0);
+  --section-card-tech-border-a: 1px solid rgba(45, 233, 245, 1);
+  --section-product-card-border-a: 1px solid rgba(45, 233, 245, 1);
+  --section-product-info-bg-a: rgba(45, 233, 245, 0);
+  --section-product-info-border-a: 0px solid rgba(45, 233, 245, 0);
+}
+:root.dark-summer {
+  --main-bg: rgb(51, 51, 51);
+  --main-bg-a: rgb(51, 51, 51, 0.75);
+  --color-navbar: rgb(51, 51, 51);
+  --navbar-color-a: rgba(51, 51, 51, 0.75);
+  --navbar-color-border: rgb(255, 164, 0);
+  --navbar-btn-a: rgba(255, 164, 0, 1);
+  --navbar-btn-icon:rgb(45, 45, 45);
+  --navbar-btn-border: rgb(255, 164, 0);
+  --navbar-btn-border-a: rgb(255, 164, 0, 1);
+  --color-logo: rgb(255, 164, 0);
+  // --color-heading: #3684FF;
+  --color-heading: rgb(255, 164, 0);
+  --color-text:#B5B5B5;
+  --color-border: rgb(255, 164, 0);
+  --li-hover-color: rgb(255, 164, 0);
+  --li-border:rgb(255, 164, 0);
+  --footer-bg-color-a: rgb(67, 67, 67, 1);
+  --section-particles-mask-a: initial;
+  --section-bg-color-a: rgba(67, 67, 67, 1);
+  --section-card-bg-a: rgba(67, 67, 67, 1);
+  --section-card-bg-tech-a: rgba(67, 67, 67, 1);
+  --section-card-tech-border-a: 0px solid rgba(255, 164, 0, 0);
+  --section-product-card-border-a: 1px solid rgba(255, 164, 0, 1);
+  --section-product-info-bg-a: rgba(235, 235, 235, 0);
+  --section-product-info-border-a: initial;
+}
+
+
+
+
+
+
+// swap dark / light mode
+// key=className, value=$variable
+$themes: (
+  light: (
+    backgroundColor: $light-bg,
+    foregroundColor: $light-bg-panel,
+    header: $light-color-heading,
+    textColor: $light-color-text
+  ),
+  dark: (
+    backgroundColor: $dark-bg,
+    foregroundColor: $dark-bg-panel,
+    header: $dark-color-heading,
+    textColor: $dark-color-text
+  )
+);
+// change border color of buttons and other elements
+$borderSwap: (
+  winter: (
+    border: $dark-pt-winter,
+    buttonColor: $dark-pt-winter,
+    buttonBorder: $dark-pt-winter
+    // buttonTextColor: $dark-pt-winter
+  ),
+  summer: (
+    border: $dark-pt-summer,
+    buttonColor: $dark-pt-summer,
+    buttonBorder: $dark-pt-summer
+  )
+);
+*/

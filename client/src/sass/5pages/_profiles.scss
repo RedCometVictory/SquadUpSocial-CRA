@@ -1,0 +1,310 @@
+// profiles feed
+.profiles-page-wrapper {
+  padding: 1.8rem 0rem 0rem;
+  &.dash-follows {
+    padding: 0.5rem 0 0;
+  }
+}
+.profiles {
+  width: 100%;
+  padding: 2rem 0 1rem;
+  &.dash-profiles {
+      padding-top: 10px;
+  }
+  &__profile {
+    background-color: var(--bg-panel);
+    align-items: center;
+    padding: 1.2rem;
+    border-radius: 5px;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  &__profile-img {
+    background-color: var(--bg-primary);
+    height: 6rem;
+    width: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__profile-info {
+    margin-top: 0rem;
+  }
+  &__profile-tag-name {
+    white-space: nowrap;
+    display: block;
+    margin: -12px 0 12px 0;
+  }
+  &__profile-btn {
+    margin: 0;
+  }
+}
+
+.profile {
+  width: 100%;
+  display: block;
+  &__header-image {
+    background-color: grey;
+    height: 40vh;
+    width: 100%;
+    display: block;
+    -webkit-border-radius: 0px 0px 12px 12px;
+    -moz-border-radius: 0px 0px 12px 12px;
+    border-radius: 0px 0px 12px 12px;
+  }
+  &__profile-bg-image {
+    object-fit: cover;
+    border-radius: 0px 0px 12px 12px;
+    width: 100%;
+    height: 100%;
+    // background-color:;
+    max-height: 446px;
+    display: flex;
+  }
+  &__content-header {
+    // background-color: blue;
+    height: auto;
+    // display: flex;
+    // padding: 0 1rem;
+    // padding: 0.5rem 0 0;
+    // justify-content: space-between;
+    position: relative;
+    // margin-bottom: 2rem;
+  }
+  &__avatar-position {
+    position: absolute;
+    top: -76px;
+    left: 16px;
+  }
+  &__profile-img {
+    // object-fit: scale-down;
+    object-fit: cover;
+    background-color: var(--bg-primary);
+    height: 8rem;
+    width: 8rem;
+    // padding: 1.5rem;
+    border-radius: 50%;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+  }
+  &__header {
+    // background-color: pink;
+    // margin-left: 8rem;
+    padding: 4rem 0 0 0;
+  }
+  &__profile-tag-name {
+    white-space: nowrap;
+    display: block;
+    margin: -6px 0 12px 0;
+  }
+  
+  // &__header-buttons {
+    // padding: 0.5rem;
+  // }
+  &__header-button {
+    display: block;
+    margin: 0.35rem 0;
+    text-align: center;
+  }
+  &__content {
+    // padding: 0 1rem;
+    padding: 1rem 0 0 0;
+  }
+  &__follow-details {
+    // border: 1px solid limegreen;
+    // height: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 0 1rem 0;
+    // padding: 0 0.55rem 0.55rem;
+  }
+  &__followers-info {
+    width: 100%;
+    // display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: inherit;
+  }
+  &__follow-num {
+    display: flex;
+    flex-direction: column;
+  }
+  &__follow {
+    display: inline;
+    margin: 0 0.8rem 0 0;
+  }
+  &__follow-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-navbar);
+    margin-right: 3px;
+  }
+  &__follow-stat {
+    display: flex;
+    align-self: center;
+  }
+  &__detail {
+    margin: 0 0 6px 0;
+  }
+  // &__interests {
+    // background-color: pink;
+    // opacity: 0.5;
+  // }
+  &__interest {
+    // background-color: cadetblue;
+    display: inline-block;
+    margin: 0 0.2rem;
+  }
+  &__info-block {
+    // background-color: cornsilk;
+    font-size: 12px;
+    border: 1px solid var(--color-tagbox);
+    border-radius: 3px;
+    padding: 3px;
+    margin: 3px 0;
+  }
+  &__socials {
+    // display: block;
+    display: grid;
+    row-gap: 20px;
+    grid-template-columns: 50px 50px 50px 50px;
+    // grid-template-rows: 30px 30px;
+    padding-top: 10px;
+    justify-items: center;
+    justify-content: space-around;
+  }
+  &__social {
+    transition: 0.5s;
+    &:hover {
+      color: var(--color-navbar);
+    }
+  }
+  &__posts-header {
+    margin-bottom: 0.5rem;
+    padding-top: 1rem;
+  }
+}
+// @media (min-width: 300px) {
+  // .profile {
+    // &__header-image {
+      // padding: 0 1rem;
+    // }
+    // &__content {
+    //   padding: 0 1rem;
+    // }
+  // }
+// }
+// @media (min-width: 360px) {
+//   .profile {
+    
+//   }
+// }
+
+@media (min-width: 360px) {
+  .profile {
+    &__header {
+      padding: 0.5rem 0 6px;
+      margin-left: 10rem;
+    }
+    // &__follow-num {
+      // flex-direction: row;
+      // align-items: flex-start;
+    // }
+  }
+}
+@media (min-width: 440px) {
+  .profiles-page-wrapper {
+    padding: 3.5rem 0rem 0rem;
+    // &.dash-follows {
+    //   padding: 0;
+    // }
+  }
+  .profiles {
+    // &.dash-profiles {
+    //   padding-top: 10px;
+    // }
+    &__profile {
+      display: flex;
+      justify-content: flex-start;
+    }
+    &__profile-info {
+      margin: 0 0 0 1.4rem;
+    }
+  }
+  .profile {
+    &__follow-num {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+}
+@media (min-width: 460px) {
+  .profile {
+    &__header-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;    
+    }
+    &__header-button {
+      display: initial;
+      width: 48%;
+    }
+  }
+}
+@media (min-width: 580px) {
+  .profile {
+    &__socials {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+    }
+  }
+}
+@media (min-width: 600px) {
+  .profile {
+    &__header {
+      padding: 0.5rem 0 6px;
+      margin-left: 10rem;
+      position: relative;
+    }
+    &__header-buttons {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 16px;
+      top: 10px;
+    }
+    &__header-button {
+      // display: block;
+      width: initial;
+      margin: 0.2rem 0;
+      max-width: 131px;
+    }
+    &__follow-details {
+      height: 3rem;
+      justify-content: flex-start;
+    }
+  }
+}
+// @media (min-width: 820px) {}
+@media (min-width: 860px) {
+  .profiles {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    justify-content: space-between;
+    // &__profile {}
+  }
+}
+@media (min-width: 1080px) {
+  .profile {
+    &__socials {
+      justify-content: space-around;
+    }
+  }
+}
