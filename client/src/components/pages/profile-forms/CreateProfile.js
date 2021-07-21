@@ -27,6 +27,11 @@ const CreateProfile = () => {
   // toggle adding social media links, button used for onclick, pass opposite value of current bool state, false to true - true to false
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
   // use useState keys as variables, destructure from formData
+  // ***** Validate File Type *****
+  const [fileTypeError, setFileTypeError] = useState(false);
+  // ***** Validate File Size *****
+  const [fileSizeError, setFileSizeError] = useState(false);
+
   const {
     address, address2,
     city, state,
@@ -45,6 +50,11 @@ const CreateProfile = () => {
   const onChange = e => setFormProfileData({ ...formProfileData, [e.target.name]: e.target.value });
   const handleBackgroundImageChange = (e) => {
     // setBackgroundImage(e.target.files[0]);
+    // check file type
+    let fileToUpload = e.target.files[0];
+    checkFileType(fileToUpload);
+    // check file size
+    checkFileSize(fileToUpload);
     setFormProfileData({
       ...formProfileData,
       [e.target.name]: e.target.files[0]
@@ -55,6 +65,24 @@ const CreateProfile = () => {
     dispatch(createProfile(formProfileData, history));
     // dispatch(createProfile({...formData, ...backgroundImage}, history));
   }
+  // ********* Check File Size and Type ***********
+  // check file type
+  const checkFileType = (img) => {
+    const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+    if (types.every(type => img.type !== type)) {
+      return setFileTypeError(true);
+    }
+    return setFileTypeError(false);
+  }
+
+  const checkFileSize=(img)=>{
+    let size = 3 * 1024 * 1024; // size limit 3mb
+    if (img.size > size) {
+      return setFileSizeError(true);
+    }
+    return setFileSizeError(false);
+  }
+  // ****************************************
 
   return (
     <section className="form-page-wrapper">
@@ -307,7 +335,13 @@ const CreateProfile = () => {
             </div>
           </div>
           <div className="form__footer">
-            <input type="submit" className="btn btn-primary btn-full-width form__submit" value="Create Profile" />
+            {fileTypeError || fileSizeError ? (
+              <div className="form__error">
+                File type or size limit exceeded: jpg, jpeg, png, gif only and size must be less than 3mb.
+              </div>
+            ) : (
+              <input type="submit" className="btn btn-primary btn-full-width form__submit" value="Create Profile" />
+            )}
             <div className="form__toggle-btn">
               <Link className="btn btn-secondary no-side-margin form__toggle-btn" to="/dashboard">
                 Go Back

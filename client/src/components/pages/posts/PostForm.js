@@ -7,6 +7,10 @@ const initialState = {title: '', description: '', image_url: ''};
 const PostForm = () => {
   const dispatch = useDispatch();
   const [formPostData, setFormPostData] = useState(initialState);
+  // ***** Validate File Type *****
+  const [fileTypeError, setFileTypeError] = useState(false);
+  // ***** Validate File Size *****
+  const [fileSizeError, setFileSizeError] = useState(false);
   // const [image_url, setImage] = useState(false);
   // onchange attribute will be passed a string which is the value attr input
   // ensure that name and value attr of input and textareas are the same!!!!
@@ -16,13 +20,35 @@ const PostForm = () => {
   // const fileInputText = React.useRef(null); // clear text from file upload field when called
   const fileInputText = useRef();
   const onChange = e => setFormPostData({ ...formPostData, [e.target.name]: e.target.value });
+
   const handleImageChange = (e) => {
+    let fileToUpload = e.target.files[0];
     // setImage(e.target.files[0]);
+    checkFileType(fileToUpload);
+    checkFileSize(fileToUpload);
     setFormPostData({
       ...formPostData,
       [e.target.name]: e.target.files[0]
     });
   };
+  // ********* Check File Size and Type ***********
+  // check file type
+  const checkFileType = (img) => {
+    const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+    if (types.every(type => img.type !== type)) {
+      return setFileTypeError(true);
+    }
+    return setFileTypeError(false);
+  }
+
+  const checkFileSize=(img)=>{
+    let size = 3 * 1024 * 1024; // size limit 3mb
+    if (img.size > size) {
+      return setFileSizeError(true);
+    }
+    return setFileSizeError(false);
+  }
+  // ****************************************
   const onSubmit = e => {
     e.preventDefault();
     // call action and pass to it text set as an object (this is the formData within the action function)
@@ -70,8 +96,14 @@ const PostForm = () => {
             value={description}
             required
           ></textarea>
-          <input type="submit" className="btn btn-primary post__form-btn" value="Create Post" />
         </div>
+        {fileTypeError || fileSizeError ? (
+          <div className="form__error">
+            File type or size limit exceeded: jpg, jpeg, png, gif only and size must be less than 3mb.
+          </div>
+        ) : (
+          <input type="submit" className="btn btn-primary post__form-btn" value="Create Post" />
+        )}
       </form>
     </div>
   );

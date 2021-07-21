@@ -14,6 +14,10 @@ const PostEditForm = () => {
   const { post, loading } = postState;
   const [formPostData, setFormPostData] = useState(initialState);
   // const [image_url, setImage] = useState(false);
+  // ***** Validate File Type *****
+  const [fileTypeError, setFileTypeError] = useState(false);
+  // ***** Validate File Size *****
+  const [fileSizeError, setFileSizeError] = useState(false);
 
   useEffect(() => {
     dispatch(getPostById(post_id));
@@ -31,12 +35,35 @@ const PostEditForm = () => {
   const { title, description } = formPostData;
   const onChange = e => setFormPostData({ ...formPostData, [e.target.name]: e.target.value });
   const handleImageChange = (e) => {
+    // check file type
+    let fileToUpload = e.target.files[0];
+    checkFileType(fileToUpload);
+    // check file size
+    checkFileSize(fileToUpload);
     // setImage(e.target.files[0]);
     setFormPostData({
       ...formPostData,
       [e.target.name]: e.target.files[0]
     });
   };
+  // ********* Check File Size and Type ***********
+  // check file type
+  const checkFileType = (img) => {
+    const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+    if (types.every(type => img.type !== type)) {
+      return setFileTypeError(true);
+    }
+    return setFileTypeError(false);
+  }
+
+  const checkFileSize=(img)=>{
+    let size = 3 * 1024 * 1024; // size limit 3mb
+    if (img.size > size) {
+      return setFileSizeError(true);
+    }
+    return setFileSizeError(false);
+  }
+  // ****************************************
 
   const onSubmit = e => {
     e.preventDefault();
@@ -90,7 +117,13 @@ const PostEditForm = () => {
               required
             ></textarea>
           </div>
-          <input type="submit" className="btn btn-primary post__form-btn" value="Submit Post Edit" />
+          {fileTypeError || fileSizeError ? (
+            <div className="form__error">
+              File type or size limit exceeded: jpg, jpeg, png, gif only and size must be less than 3mb.
+            </div>
+          ) : (
+            <input type="submit" className="btn btn-primary post__form-btn" value="Submit Post Edit" />
+          )}
         </form>
       </div>
     )

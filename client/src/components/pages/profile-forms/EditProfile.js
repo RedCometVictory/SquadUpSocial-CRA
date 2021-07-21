@@ -541,6 +541,14 @@ const EditProfile = () => {
   // use useState keys as variables, destructure from formData
   // useEffect allows us to run getGetCurrentProfile action - to fetch the data and send it down through state
   // retrieve data from profile w/action method, set formData (current profile values). Call setFormData after we get a profile and run validation checks on all properties to ensure that if the values are 'stuck' loading OR are not profile value(s), then the fields are filled in as blank, however if there are valid values (and are not loading) then they shall be filled into the form fields.
+  // ***** Validate File Type *****
+  const [avatarTypeError, setAvatarTypeError] = useState(false);
+  // ***** Validate File Size *****
+  const [avatarSizeError, setAvatarSizeError] = useState(false);
+
+  const [backgroundTypeError, setBackgroundTypeError] = useState(false);
+  const [backgroundSizeError, setBackgroundSizeError] = useState(false);
+  
   useEffect(() => {
     dispatch(getCurrentUserAccountSettings());
     
@@ -586,14 +594,14 @@ const EditProfile = () => {
   const {
     f_name, l_name,
     username, tag_name,
-    user_email, user_avatar,
+    user_email, // user_avatar,
     address, address2,
     city, state,
     country, zipcode,
     gender, birthday,
     company, status,
     interests, // ensure this is an arr
-    bio, background_image,
+    bio, // background_image,
     youtube, facebook,
     twitter, instagram,
     linkedin, twitch,
@@ -602,8 +610,15 @@ const EditProfile = () => {
 
   // inputs have onchange - whatever is placed in the input value will be placed into the state. all inputs place a value attribute that equals the value of the keyname found in the state
   const onChange = e => setFormProfileData({ ...formProfileData, [e.target.name]: e.target.value });
+
   const handleAvatarImageChange = (e) => {
     // setAvatarImage(e.target.files[0]);
+    let inputName = e.target.name;
+    // check file type
+    let fileToUpload = e.target.files[0];
+    checkFileType(fileToUpload, inputName);
+    // check file size
+    checkFileSize(fileToUpload, inputName);
     setFormProfileData({
       ...formProfileData,
       [e.target.name]: e.target.files[0]
@@ -611,11 +626,87 @@ const EditProfile = () => {
   };
   const handleBackgroundImageChange = (e) => {
     // setBackgroundImage(e.target.files[0]);
+    let inputName = e.target.name;
+    // check file type
+    // pass input name as 2nd ar
+    let fileToUpload = e.target.files[0];
+    checkFileType(fileToUpload, inputName);
+    // check file size
+    checkFileSize(fileToUpload, inputName);
     setFormProfileData({
       ...formProfileData,
       [e.target.name]: e.target.files[0]
     });
   };
+  // ********* Check File Size and Type ***********
+  // check file type
+  const checkFileType = (img, name) => {
+    const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+    // if name choose which state to effect
+    if (types.every(type => img.type !== type)) {
+      if (name === 'user_avatar') {
+        return setAvatarTypeError(true);
+      }
+      // return (
+        // setAvatarTypeError(true)
+      // )
+    // }
+    // if (types.every(type => img.type !== type)) {
+      if (name === 'background_image') {
+        return setBackgroundTypeError(true);
+      }
+      // return (
+        // setBackgroundTypeError(true)
+      // )
+      
+    }
+    if (types.every(type => img.type === type)) {
+      if (name === 'user_avatar') {
+        return setAvatarTypeError(false);
+      }
+        // setAvatarTypeError(true)
+      if (name === 'background_image') {
+        return setBackgroundTypeError(false);
+      }
+        // setBackgroundTypeError(true))
+      
+    }
+
+    // return (
+    // setAvatarTypeError(false) // ,
+    // if (backgroundTypeError === !true) {
+      // setBackgroundTypeError(false)
+    // }
+    // )
+  }
+
+  const checkFileSize=(img, name)=>{
+    let size = 3 * 1024 * 1024; // size limit 3mb
+    if (img.size > size) {
+      if (name === 'user_avatar') {
+        return setAvatarSizeError(true);
+      }
+      if (name === 'background_image') {
+        // return setAvatarSizeError(true);
+        return setBackgroundSizeError(true);
+      }
+    }
+    if (img.size < size) {
+      if (name === 'user_avatar') {
+        return setAvatarSizeError(false);
+      }
+      if (name === 'background_image') {
+        return setBackgroundSizeError(false);
+      }
+    }
+    // return (
+    // setAvatarSizeError(false) // ,
+    // if (backgroundSizeError === !true) {
+      // setBackgroundSizeError(false)
+    // }
+    // )
+  }
+  // ****************************************
 
   const onSubmit = e => {
     e.preventDefault();
@@ -957,7 +1048,13 @@ const EditProfile = () => {
             </div>
           </div>
           <div className="form__footer">
-            <input type="submit" className="btn btn-primary btn-full-width form__submit" value="Update Profile" />
+            {avatarTypeError || avatarSizeError ||backgroundTypeError || backgroundSizeError ? (
+              <div className="form__error">
+                File type or size limit exceeded: jpg, jpeg, png, gif only and size must be less than 3mb.
+              </div>
+            ) : (
+              <input type="submit" className="btn btn-primary btn-full-width form__submit" value="Update Profile" />
+            )}
             <div className="form__toggle-btn">
               <Link className="btn btn-secondary form__toggle-btn" to="/dashboard">
                 Go Back

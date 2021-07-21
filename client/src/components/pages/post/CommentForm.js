@@ -8,6 +8,10 @@ const initialState = {title: '', description: ''};
 const CommentForm = ({ postId }) => {
   const dispatch = useDispatch();
   const [formCommentData, setFormCommentData] = useState(initialState);
+  // ***** Validate File Type *****
+  const [fileTypeError, setFileTypeError] = useState(false);
+  // ***** Validate File Size *****
+  const [fileSizeError, setFileSizeError] = useState(false);
   // const [image_url, setImage] = useState(false);
   // onchange attribute is passed a string - the value attr input
   // ensure name and value attr of input and textareas are the same!!!
@@ -16,6 +20,11 @@ const CommentForm = ({ postId }) => {
   const fileInputText = useRef();
   const onChange = e => setFormCommentData({ ...formCommentData, [e.target.name]: e.target.value });
   const handleImageChange = (e) => {
+    // check file type
+    let fileToUpload = e.target.files[0];
+    checkFileType(fileToUpload);
+    // check file size
+    checkFileSize(fileToUpload);
     // setImage(e.target.files[0]);
     setFormCommentData({
       ...formCommentData,
@@ -31,6 +40,24 @@ const CommentForm = ({ postId }) => {
     setFormCommentData({title: '', description: ''});
     // setImage(false);
   }
+  // ********* Check File Size and Type ***********
+  // check file type
+  const checkFileType = (img) => {
+    const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+    if (types.every(type => img.type !== type)) {
+      return setFileTypeError(true);
+    }
+    return setFileTypeError(false);
+  }
+
+  const checkFileSize=(img)=>{
+    let size = 3 * 1024 * 1024; // size limit 3mb
+    if (img.size > size) {
+      return setFileSizeError(true);
+    }
+    return setFileSizeError(false);
+  }
+  // ****************************************
 
   return (
     <div className="post comments__comment-form">
@@ -73,7 +100,13 @@ const CommentForm = ({ postId }) => {
               required
             ></textarea>
           </div>
-          <input type="submit" className="btn btn-primary post__form-btn" value="Create Comment" />
+          {fileTypeError || fileSizeError ? (
+              <div className="form__error">
+                File type or size limit exceeded: jpg, jpeg, png, gif only and size must be less than 3mb.
+              </div>
+            ) : (
+              <input type="submit" className="btn btn-primary post__form-btn" value="Create Comment" />
+            )}
         </form>
       </div>
     </div>

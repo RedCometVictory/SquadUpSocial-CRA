@@ -16,23 +16,44 @@ const Register = () => {
     email: '', password: '',
     password2: '', avatar: null
   });
+  // ***** Validate File Type *****
+  const [fileTypeError, setFileTypeError] = useState(false);
+  // ***** Validate File Size *****
+  const [fileSizeError, setFileSizeError] = useState(false);
 
   const { firstName, lastName, username, tagName, email, password, password2 } = formRegData; // +{avatar}
 
   const onChange = (e) => {
     setFormRegData({ ...formRegData, [e.target.name]: e.target.value });
   };
+  // *************original
+  // const handleAvatarChange = (e) => {
+  //   // setAvatar(e.target.files[0]);
+  //   setFormRegData({
+  //     ...formRegData,
+  //     [e.target.name]: e.target.files[0]
+  //   });
+  //   // generate preview???
+  //   // let reader = new FileReader()
+  //   // reader.readAsDataURL(event.target.files[0])
+  //   // reader.onload = (e) => {
+  //   //   setPreview(e.target.result)
+  //   // }
+  // };
+  // ******************original
+
   const handleAvatarChange = (e) => {
+    // check file type
+    let fileToUpload = e.target.files[0];
+    checkFileType(fileToUpload);
+    // check file size
+    checkFileSize(fileToUpload);
     // setAvatar(e.target.files[0]);
-    setFormRegData({
-      ...formRegData,
-      [e.target.name]: e.target.files[0]
-    });
-    // generate preview???
-    // let reader = new FileReader()
-    // reader.readAsDataURL(event.target.files[0])
-    // reader.onload = (e) => {
-    //   setPreview(e.target.result)
+    // if (!fileTypeError || !fileSizeError) {
+      setFormRegData({
+        ...formRegData,
+        [e.target.name]: e.target.files[0]
+      });
     // }
   };
   const onSubmit = async (e) => {
@@ -46,6 +67,24 @@ const Register = () => {
   if (isAuthenticated) {
     return <Redirect to="/feed" />
   }
+  // ********* Check File Size and Type ***********
+  // check file type
+  const checkFileType = (img) => {
+    const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+    if (types.every(type => img.type !== type)) {
+      return setFileTypeError(true);
+    }
+    return setFileTypeError(false);
+  }
+
+  const checkFileSize=(img)=>{
+    let size = 3 * 1024 * 1024; // size limit 3mb
+    if (img.size > size) {
+      return setFileSizeError(true);
+    }
+    return setFileSizeError(false);
+  }
+  // ****************************************
 
   return (
     <section className="form-page-wrapper">
@@ -113,7 +152,13 @@ const Register = () => {
             </div>
           </div>
           <div className="form__footer">
-            <input type="submit" className="btn btn-primary btn-full-width form__submit" value="Register" />
+            {fileTypeError || fileSizeError ? (
+              <div className="form__error">
+                File type or size limit exceeded: jpg, jpeg, png, gif only and size must be less than 3mb.
+              </div>
+            ) : (
+              <input type="submit" className="btn btn-primary btn-full-width form__submit" value="Register" />
+            )}
             <p>
               Already have an account?{" "}<Link to="/login"><span className="form form__link">Login.</span></Link>
             </p>
