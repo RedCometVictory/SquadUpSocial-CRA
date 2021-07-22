@@ -53,6 +53,7 @@ const Navbar = () => {
       </li>
     </Fragment>
   );
+  
   const guestLinks = (
     <Fragment>
       <li className="nav__item">
@@ -63,6 +64,7 @@ const Navbar = () => {
       </li>
     </Fragment>
   );
+
   return (
     <HelmetProvider>
     <header className="nav__header">
@@ -120,5 +122,4 @@ const Navbar = () => {
     </HelmetProvider>
   );
 };
-
 export default Navbar;

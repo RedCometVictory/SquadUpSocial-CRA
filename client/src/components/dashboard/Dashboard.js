@@ -14,11 +14,6 @@ const Dashboard = () => {
   // PROFILE_ERROR results if no profile yet exists
   // GET_PROFILE results if profile exists
   const { profileUserData, profileStats, loading } = profile;
-  // console.log("dashboard loading profile data...");
-  // console.log("----------------------------")
-  // console.dir(profileUserData);
-  // console.log("----------------------------")
-  // console.dir(profileStats);
 
   useEffect(() => {
     dispatch(getCurrentUserAccountSettings());

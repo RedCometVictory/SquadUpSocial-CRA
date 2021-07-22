@@ -1,4 +1,3 @@
-// require('dotenv').config();
 import api from '../../utils/api';
 import { setAlert } from './alertActions';
 import {
@@ -40,7 +39,6 @@ import { addPostForm, editPostForm, addCommentForm } from '../../utils/formDataS
 export const getAllPosts = () => async dispatch => {
   dispatch ({ type: CLEAR_POST });
   try {
-    // console.log("ACTION: get all posts")
     const res = await api.get('/posts');
     // const res = await axios.get(baseURL + '/posts');
     dispatch ({
@@ -307,7 +305,6 @@ export const deletePost = (postId, history) => async dispatch => {
 export const deletePostComment = (postId, commentId) => async dispatch => {
   try {
     await api.delete(`/posts/delete/comment/${postId}/${commentId}`);
-    // const res = await api.delete(`/posts/delete/comment/${postId}/${commentId}`);
   
     dispatch ({
       type: DELETE_COMMENT,

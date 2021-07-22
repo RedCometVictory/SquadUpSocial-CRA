@@ -1,7 +1,7 @@
 // reducers are functions that take in any piece of state and apply actions to them.
 import { SET_ALERT, REMOVE_ALERT } from '../constants/alertConstants';
 // alert state is an [] of obj.
-// Example below:
+
 // const initialState = [{
   // id: 1, msg: 'Please Login.', alertType: 'success'
 // }]

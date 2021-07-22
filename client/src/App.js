@@ -8,7 +8,6 @@ import Routes from './components/routing/Routes';
 // Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
-// import store from './redux/store.js';
 
 import { loadUser, logout } from './redux/actions/authActions';
 
@@ -27,7 +26,6 @@ const App = () => {
     
     // logout user from all tabs if logged out from one tab
     window.addEventListener('storage', ()=> {
-      // if (!localStorage.token) store.dispatch({ type: LOGOUT });
       if (!localStorage.token) store.dispatch(logout());
     });
   }, []);
@@ -36,7 +34,6 @@ const App = () => {
     <Router>
         <Fragment>
           <Navbar />
-          {/* <Route exact path="/" component={ Landing } /> */}
           <Switch>
           <Route exact path="/" component={ Landing } />
           <Route component={ Routes } />

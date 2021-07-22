@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-// import Spinner from '../../layouts/Spinner';
 import { followProfile, unfollowProfile } from '../../../redux/actions/profileActions';
 
 const ProfileAbout = ({

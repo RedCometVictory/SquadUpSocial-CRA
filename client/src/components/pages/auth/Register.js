@@ -16,9 +16,8 @@ const Register = () => {
     email: '', password: '',
     password2: '', avatar: null
   });
-  // ***** Validate File Type *****
+
   const [fileTypeError, setFileTypeError] = useState(false);
-  // ***** Validate File Size *****
   const [fileSizeError, setFileSizeError] = useState(false);
 
   const { firstName, lastName, username, tagName, email, password, password2 } = formRegData; // +{avatar}
@@ -26,35 +25,16 @@ const Register = () => {
   const onChange = (e) => {
     setFormRegData({ ...formRegData, [e.target.name]: e.target.value });
   };
-  // *************original
-  // const handleAvatarChange = (e) => {
-  //   // setAvatar(e.target.files[0]);
-  //   setFormRegData({
-  //     ...formRegData,
-  //     [e.target.name]: e.target.files[0]
-  //   });
-  //   // generate preview???
-  //   // let reader = new FileReader()
-  //   // reader.readAsDataURL(event.target.files[0])
-  //   // reader.onload = (e) => {
-  //   //   setPreview(e.target.result)
-  //   // }
-  // };
-  // ******************original
 
   const handleAvatarChange = (e) => {
-    // check file type
     let fileToUpload = e.target.files[0];
     checkFileType(fileToUpload);
-    // check file size
     checkFileSize(fileToUpload);
     // setAvatar(e.target.files[0]);
-    // if (!fileTypeError || !fileSizeError) {
       setFormRegData({
         ...formRegData,
         [e.target.name]: e.target.files[0]
       });
-    // }
   };
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -67,8 +47,8 @@ const Register = () => {
   if (isAuthenticated) {
     return <Redirect to="/feed" />
   }
-  // ********* Check File Size and Type ***********
-  // check file type
+
+  // Check File Size and Type
   const checkFileType = (img) => {
     const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
     if (types.every(type => img.type !== type)) {
@@ -84,7 +64,6 @@ const Register = () => {
     }
     return setFileSizeError(false);
   }
-  // ****************************************
 
   return (
     <section className="form-page-wrapper">

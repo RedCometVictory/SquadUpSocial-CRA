@@ -14,9 +14,7 @@ const PostEditForm = () => {
   const { post, loading } = postState;
   const [formPostData, setFormPostData] = useState(initialState);
   // const [image_url, setImage] = useState(false);
-  // ***** Validate File Type *****
   const [fileTypeError, setFileTypeError] = useState(false);
-  // ***** Validate File Size *****
   const [fileSizeError, setFileSizeError] = useState(false);
 
   useEffect(() => {
@@ -31,9 +29,12 @@ const PostEditForm = () => {
   // }, [dispatch, post_id, post, loading]);
 
   const fileInputText = useRef();
+  
   // const { title, description, image_url } = formPostData;
   const { title, description } = formPostData;
+  
   const onChange = e => setFormPostData({ ...formPostData, [e.target.name]: e.target.value });
+
   const handleImageChange = (e) => {
     // check file type
     let fileToUpload = e.target.files[0];
@@ -46,7 +47,7 @@ const PostEditForm = () => {
       [e.target.name]: e.target.files[0]
     });
   };
-  // ********* Check File Size and Type ***********
+
   // check file type
   const checkFileType = (img) => {
     const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
@@ -63,7 +64,6 @@ const PostEditForm = () => {
     }
     return setFileSizeError(false);
   }
-  // ****************************************
 
   const onSubmit = e => {
     e.preventDefault();

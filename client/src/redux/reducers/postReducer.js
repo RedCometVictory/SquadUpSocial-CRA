@@ -28,7 +28,6 @@ const initialState = {
   loading: true,
   error: {}
 };
-// console.log(initialState);
 
 const postReducer = (state = initialState, action) => {
   const { type, payload } = action;

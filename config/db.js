@@ -3,7 +3,7 @@ require('dotenv').config();
 // PostgreSQL
 const { Pool } = require('pg');
 
-
+/*
 // for local development
 const pool = new Pool({
   host: process.env.PG_HOST,
@@ -25,26 +25,26 @@ pool.on("error", (err) => {
 pool.on("end", () => {
   console.log("Connection to Posgres db ended...");
 });
-
+*/
 // **********************************************************************
 // ******************** THIS SET UP FOR PRODUTION ***********************
 // **********************************************************************
 
-// const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
+const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
   
-// // for production
+// for production
   
-// // value from heroku addons - connection sting to PG hosted via Heroku
-// const proConfig = process.env.DATABASE_URL;
+// value from heroku addons - connection sting to PG hosted via Heroku
+const proConfig = process.env.DATABASE_URL;
   
-// const pool = new Pool({
-//   connectionString: process.env.NODE_ENV === "production" ? proConfig : devConfig,
-//   // connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     require: true,
-//     rejectUnauthorized: false
-//   } 
-// });
+const pool = new Pool({
+  connectionString: process.env.NODE_ENV === "production" ? proConfig : devConfig,
+  // connectionString: process.env.DATABASE_URL,
+  ssl: {
+    require: true,
+    rejectUnauthorized: false
+  } 
+});
 
 // **********************************************************************
 // **********************************************************************

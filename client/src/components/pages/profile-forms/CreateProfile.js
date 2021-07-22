@@ -27,9 +27,7 @@ const CreateProfile = () => {
   // toggle adding social media links, button used for onclick, pass opposite value of current bool state, false to true - true to false
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
   // use useState keys as variables, destructure from formData
-  // ***** Validate File Type *****
   const [fileTypeError, setFileTypeError] = useState(false);
-  // ***** Validate File Size *****
   const [fileSizeError, setFileSizeError] = useState(false);
 
   const {
@@ -65,7 +63,7 @@ const CreateProfile = () => {
     dispatch(createProfile(formProfileData, history));
     // dispatch(createProfile({...formData, ...backgroundImage}, history));
   }
-  // ********* Check File Size and Type ***********
+
   // check file type
   const checkFileType = (img) => {
     const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
@@ -82,7 +80,6 @@ const CreateProfile = () => {
     }
     return setFileSizeError(false);
   }
-  // ****************************************
 
   return (
     <section className="form-page-wrapper">

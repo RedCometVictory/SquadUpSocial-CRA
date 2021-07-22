@@ -7,9 +7,7 @@ const initialState = {title: '', description: '', image_url: ''};
 const PostForm = () => {
   const dispatch = useDispatch();
   const [formPostData, setFormPostData] = useState(initialState);
-  // ***** Validate File Type *****
   const [fileTypeError, setFileTypeError] = useState(false);
-  // ***** Validate File Size *****
   const [fileSizeError, setFileSizeError] = useState(false);
   // const [image_url, setImage] = useState(false);
   // onchange attribute will be passed a string which is the value attr input
@@ -17,7 +15,8 @@ const PostForm = () => {
   // const { title, description, image_url } = formPostData;
   const { title, description } = formPostData;
   
-  // const fileInputText = React.useRef(null); // clear text from file upload field when called
+  // const fileInputText = React.useRef(null);
+  // clear text from file upload field when called
   const fileInputText = useRef();
   const onChange = e => setFormPostData({ ...formPostData, [e.target.name]: e.target.value });
 
@@ -31,7 +30,7 @@ const PostForm = () => {
       [e.target.name]: e.target.files[0]
     });
   };
-  // ********* Check File Size and Type ***********
+
   // check file type
   const checkFileType = (img) => {
     const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
@@ -48,7 +47,7 @@ const PostForm = () => {
     }
     return setFileSizeError(false);
   }
-  // ****************************************
+
   const onSubmit = e => {
     e.preventDefault();
     // call action and pass to it text set as an object (this is the formData within the action function)

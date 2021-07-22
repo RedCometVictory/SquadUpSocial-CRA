@@ -8,17 +8,15 @@ const initialState = {title: '', description: ''};
 const CommentForm = ({ postId }) => {
   const dispatch = useDispatch();
   const [formCommentData, setFormCommentData] = useState(initialState);
-  // ***** Validate File Type *****
   const [fileTypeError, setFileTypeError] = useState(false);
-  // ***** Validate File Size *****
   const [fileSizeError, setFileSizeError] = useState(false);
   // const [image_url, setImage] = useState(false);
-  // onchange attribute is passed a string - the value attr input
-  // ensure name and value attr of input and textareas are the same!!!
+  // onchange attribute is passed a string - the value attr input, ensure name and value attr of input and textareas are the same!!!
   // const { title, description, image_url } = formCommentData;
   const { title, description } = formCommentData;
   const fileInputText = useRef();
   const onChange = e => setFormCommentData({ ...formCommentData, [e.target.name]: e.target.value });
+  
   const handleImageChange = (e) => {
     // check file type
     let fileToUpload = e.target.files[0];
@@ -31,6 +29,7 @@ const CommentForm = ({ postId }) => {
       [e.target.name]: e.target.files[0]
     });
   };
+  
   const onSubmit = e => {
     e.preventDefault();
     dispatch(createComment(postId, formCommentData));
@@ -40,7 +39,7 @@ const CommentForm = ({ postId }) => {
     setFormCommentData({title: '', description: ''});
     // setImage(false);
   }
-  // ********* Check File Size and Type ***********
+
   // check file type
   const checkFileType = (img) => {
     const types = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
@@ -57,7 +56,6 @@ const CommentForm = ({ postId }) => {
     }
     return setFileSizeError(false);
   }
-  // ****************************************
 
   return (
     <div className="post comments__comment-form">

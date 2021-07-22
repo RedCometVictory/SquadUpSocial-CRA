@@ -14,7 +14,7 @@ const Posts = () => {
     dispatch(getAllPosts());
   }, [dispatch]);
   
-  // fetch posts from api, place into state as soon as module loads
+  // fetch posts from api, place into state as soon as module loads, must keep post.map to one line
   return loading ? (
     <Spinner />
     ) : (
@@ -25,7 +25,6 @@ const Posts = () => {
         <div className="post__feed">
           {posts && posts.length > 0 ? (
             <Fragment>
-              {/* must keep to one line */}
               {posts && posts.map((post, i) => <PostItem post={post} key={i} />)}
             </Fragment>
           ) : (

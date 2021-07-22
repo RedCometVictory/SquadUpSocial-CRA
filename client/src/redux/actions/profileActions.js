@@ -54,7 +54,6 @@ export const getCurrentUserAccountSettings = () => async dispatch => {
   dispatch ({ type: CLEAR_PROFILE });
   try {
     const res = await api.get(`/profile/me`);
-    // let resProfile = res.data.data;
     dispatch({
       type:GET_PROFILE,
       payload: res.data.data
@@ -152,7 +151,6 @@ export const deleteProfile = (history) => async dispatch => {
   dispatch({ type: CLEAR_FEED_POSTS });
   try {
     await api.delete('/profile');
-    // const res = await api.delete('/profile');
     dispatch({ type: DELETE_PROFILE });
     dispatch({ type: ACCOUNT_DELETED });
     history.push('/'); // redirect to landing
