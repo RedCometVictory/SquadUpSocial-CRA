@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 // useSelector brings selected parts of state into the component to populate the state with values, useDispatch calls actions
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from '../../redux/actions/authActions';
+import { acctDemo, logout } from '../../redux/actions/authActions';
 // pass props from state into function component
 
 const Navbar = () => {
@@ -39,6 +39,11 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(logout(history));
   }
+
+  const demoHandler = async (e) => {
+    e.preventDefault();
+    dispatch(acctDemo(history));
+  }
   // /feed is for all posts of users followed and self
   const authLinks = (
     <Fragment>
@@ -49,13 +54,20 @@ const Navbar = () => {
         <Link to="/dashboard" className="nav__link">Dashboard</Link>
       </li>
       <li className="nav__item">
-        <a className="nav__link" href="\\" onClick={handleLogout}>Logout</a>
+        <a
+          className="nav__link"
+          // href="\\"
+          onClick={handleLogout}
+        >Logout</a>
       </li>
     </Fragment>
   );
   
   const guestLinks = (
     <Fragment>
+      <li className="nav__item">
+        <Link onClick={(e) => demoHandler(e)} className="nav__link">Try Demo</Link>
+      </li>
       <li className="nav__item">
         <Link to="/register" className="nav__link">Sign Up</Link>
       </li>

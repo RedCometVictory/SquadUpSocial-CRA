@@ -23,12 +23,33 @@ import { registerForm } from '../../utils/formDataServices';
 // set global header w/token
 // import setAuthToken from '../../utils/setAuthToken';
 // import authReducer from '../reducers/authReducer';
-
 // const baseURL = 'http://localhost:5000/api';
 // const baseURL = `${process.env.HEROKU_DOMAIN}/api`;
 // const baseURL = `https://squadupsocial.herokuapp.com/api`;
 // const baseURL = '/api';
 // const baseURL = '/';
+
+export const acctDemo = (history) => async dispatch => {
+  try {
+    const res = await api.get('/auth/demo');
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data.data
+    });
+
+    dispatch(loadUser());
+    dispatch(setAlert('Welcome! (Demo Acct)', 'success'));
+    history.push('/feed');
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({type: LOGIN_FAILURE});
+  }
+};
+
+
 // loadUser - action checks to see if token exists, if so place token into global header (Authorization: "Bearer " + payload.token). Set global header if there is a token in LS.
 // Treat user as logged in. Even if current tab is closed. Run this action dispatch (via App.js) as it only checks the first time the user loads.
 // transfer data from action to reducer via dispatch

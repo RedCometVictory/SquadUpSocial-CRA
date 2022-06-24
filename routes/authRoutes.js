@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const authJWT = require('../middleware/authenticator');
 const { signinAuthValidator, validatorResult } = require('../middleware/validator');
-const { authTest, authValidToken, authRefreshToken, authLogout } = require('../controllers/authController');
+const { authDemo, authTest, authValidToken, authRefreshToken, authLogout } = require('../controllers/authController');
+
+// @route    GET auth/demo
+// @desc     use demo account (login)
+// @access   Public
+router.get('/demo', authDemo);
 
 // @route    GET auth (endpoint: auth)
 // @desc     Test route / verify / backend / user_loaded

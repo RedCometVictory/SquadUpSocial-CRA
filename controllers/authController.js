@@ -3,13 +3,59 @@ const bcrypt = require('bcryptjs');
 const pool = require('../config/db');
 const { refreshTokenString, accessTokenGenerator, refreshTokenGenerator, getAccessTokenFromHeaders, validateRefreshToken, refreshTokenCookieOptions } = require('../middleware/jwtGenerator');
 
-// postman test passed, important to place new access token (when refreshing tokens occurs) in bearer that way continued access to restricted routes continues...
-// test route - get user (exempt password)
-// launched via LoadUser action
-// req.user accessible via token (authJWT)
+exports.authDemo = async (req, res, next) => {
+  let email = process.env.DEMO_EMAIL;
+  let password = process.env.DEMO_PASSWORD;
+
+  try {
+    const user = await pool.query(
+      'SELECT * FROM users WHERE user_email = $1', [email]
+    );
+    if (user.rows.length === 0) {
+      return res.status(400).json({ errors: [{ msg: "Invalid email or password."}] })
+    }
+
+    const isMatch = await bcrypt.compare(
+      password, user.rows[0].user_password
+    );
+
+    if (!isMatch) {
+      return res.status(400).json({ errors: [{ msg: "Invalid email or password."}] });
+    }
+
+    const jwtToken = accessTokenGenerator(user.rows[0].id);
+    const refreshToken = refreshTokenString();
+
+    const setRefreshToken = await pool.query(
+      'UPDATE users SET refresh_token = $1 WHERE user_email = $2 RETURNING *;', [refreshToken, user.rows[0].user_email]
+    );
+
+    if (!setRefreshToken.rows.length > 0) {
+      return res.status(403).json({ errors: [{ msg: "Unauthorized. Failed to update refresh token." }] });
+    };
+
+    const signedRefreshToken = refreshTokenGenerator(refreshToken);
+
+    const refreshOptions = refreshTokenCookieOptions();
+    res.cookie('refresh', signedRefreshToken, refreshOptions);
+
+    return res.json({
+      status: "Successful login!",
+      data: {
+        token: jwtToken
+      }
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error...");
+  }
+}
+
+// postman test passed; place new access token (when refreshing tokens occurs) in req header bearer - that way continued access to restricted routes continues...
+// test route - get user via LoadUser action
+// req.user via token (authJWT)
 // used to access user id via state.auth.user.id
 exports.authTest = async (req, res, next) => {
-  // console.log("loading user data...")
   const { id } = req.user; // passed via header
   try {
     // select all but password
@@ -20,7 +66,6 @@ exports.authTest = async (req, res, next) => {
       return res.status(403).json({ errors: [{ msg: "Unauthorized. Failed to get user data." }] });
     }
     // do not send the password to the client
-    // console.dir(user.rows[0]);
     user.rows[0].user_password = undefined;
     
     res.status(200).json({
