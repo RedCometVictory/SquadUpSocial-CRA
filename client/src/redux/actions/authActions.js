@@ -25,7 +25,7 @@ import { registerForm } from '../../utils/formDataServices';
 // import authReducer from '../reducers/authReducer';
 // const baseURL = 'http://localhost:5000/api';
 // const baseURL = `${process.env.HEROKU_DOMAIN}/api`;
-// const baseURL = `https://squadupsocial.herokuapp.com/api`;
+// const baseURL = `https://squadupsocial.cyclic.app/api`;
 // const baseURL = '/api';
 // const baseURL = '/';
 
